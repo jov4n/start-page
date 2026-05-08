@@ -73,7 +73,8 @@ export type SearchEngineId =
   | "kagi"
   | "github"
   | "youtube"
-  | "wikipedia";
+  | "wikipedia"
+  | "perplexity";
 
 export interface SearchEngine {
   id: SearchEngineId;
