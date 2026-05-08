@@ -23,6 +23,17 @@
             echo "Run 'npm run dev' to start the development server"
           '';
         };
+
+        apps.default = {
+          type = "app";
+          program = "${pkgs.writeShellScriptBin "start-app" ''
+            export PATH="${pkgs.nodejs_22}/bin:$PATH"
+            echo "Installing dependencies..."
+            npm install
+            echo "Starting dev server..."
+            npm run dev
+          ''}/bin/start-app";
+        };
       }
     );
 }
