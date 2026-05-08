@@ -37,4 +37,9 @@ export const ENGINES: SearchEngine[] = [
     url: (q) =>
       `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(q)}`,
   },
+  {
+    id: "perplexity",
+    name: "Perplexity",
+    url: (q) => `https://www.perplexity.ai/search?q=${encodeURIComponent(q)}`,
+  },
 ];
