@@ -1,0 +1,401 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Themes — Catppuccin Mocha (default), Tokyo Night, Rosé Pine, Gruvbox
+   ============================================================ */
+:root,
+[data-theme="mocha"] {
+  --base: 30 30 46;        /* #1e1e2e */
+  --mantle: 24 24 37;      /* #181825 */
+  --crust: 17 17 27;       /* #11111b */
+  --surface: 49 50 68;     /* #313244 */
+  --surface2: 69 71 90;    /* #45475a */
+  --overlay: 88 91 112;    /* #585b70 */
+  --text: 205 214 244;     /* #cdd6f4 */
+  --subtext: 166 173 200;  /* #a6adc8 */
+  --muted: 127 132 156;    /* #7f849c */
+  --line: 49 50 68;
+  --accent: 137 180 250;   /* #89b4fa blue */
+  --accent2: 203 166 247;  /* #cba6f7 mauve */
+  --accent3: 245 194 231;  /* #f5c2e7 pink */
+  --accent4: 166 227 161;  /* #a6e3a1 green */
+  --red: 243 139 168;
+  --yellow: 249 226 175;
+  --green: 166 227 161;
+}
+
+[data-theme="tokyo"] {
+  --base: 26 27 38;        /* #1a1b26 */
+  --mantle: 22 22 30;
+  --crust: 16 16 24;
+  --surface: 36 40 59;
+  --surface2: 47 53 78;
+  --overlay: 86 95 137;
+  --text: 192 202 245;
+  --subtext: 169 177 214;
+  --muted: 86 95 137;
+  --line: 36 40 59;
+  --accent: 122 162 247;   /* #7aa2f7 */
+  --accent2: 187 154 247;
+  --accent3: 247 118 142;
+  --accent4: 158 206 106;
+  --red: 247 118 142;
+  --yellow: 224 175 104;
+  --green: 158 206 106;
+}
+
+[data-theme="rose"] {
+  --base: 25 23 36;        /* Rosé Pine */
+  --mantle: 31 29 46;
+  --crust: 20 18 32;
+  --surface: 38 35 58;
+  --surface2: 56 51 80;
+  --overlay: 110 106 134;
+  --text: 224 222 244;
+  --subtext: 144 140 170;
+  --muted: 110 106 134;
+  --line: 38 35 58;
+  --accent: 196 167 231;   /* iris */
+  --accent2: 235 188 186;  /* rose */
+  --accent3: 246 193 119;  /* gold */
+  --accent4: 156 207 216;  /* foam */
+  --red: 235 111 146;
+  --yellow: 246 193 119;
+  --green: 156 207 216;
+}
+
+[data-theme="gruv"] {
+  --base: 40 40 40;        /* Gruvbox */
+  --mantle: 29 32 33;
+  --crust: 18 20 21;
+  --surface: 60 56 54;
+  --surface2: 80 73 69;
+  --overlay: 124 111 100;
+  --text: 235 219 178;
+  --subtext: 213 196 161;
+  --muted: 168 153 132;
+  --line: 60 56 54;
+  --accent: 250 189 47;    /* yellow */
+  --accent2: 254 128 25;   /* orange */
+  --accent3: 184 187 38;   /* green */
+  --accent4: 131 165 152;  /* aqua */
+  --red: 251 73 52;
+  --yellow: 250 189 47;
+  --green: 184 187 38;
+}
+
+[data-theme="latte"] {
+  --base: 239 241 245;
+  --mantle: 230 233 239;
+  --crust: 220 224 232;
+  --surface: 204 208 218;
+  --surface2: 188 192 204;
+  --overlay: 156 160 176;
+  --text: 76 79 105;
+  --subtext: 92 95 119;
+  --muted: 124 127 147;
+  --line: 204 208 218;
+  --accent: 30 102 245;
+  --accent2: 136 57 239;
+  --accent3: 234 118 203;
+  --accent4: 64 160 43;
+  --red: 210 15 57;
+  --yellow: 223 142 29;
+  --green: 64 160 43;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  background: rgb(var(--crust));
+  color: rgb(var(--text));
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv11";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ============================================================
+   Scrollbars
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--surface2) / 0.6);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent) / 0.5);
+}
+
+::selection {
+  background: rgb(var(--accent) / 0.4);
+  color: rgb(var(--text));
+}
+
+/* ============================================================
+   Glass / surfaces
+   ============================================================ */
+.glass {
+  background: rgb(var(--mantle) / 0.55);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgb(var(--text) / 0.06);
+}
+
+.glass-strong {
+  background: rgb(var(--mantle) / 0.78);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border: 1px solid rgb(var(--text) / 0.07);
+}
+
+.surface {
+  background: rgb(var(--surface) / 0.6);
+  border: 1px solid rgb(var(--text) / 0.05);
+}
+
+/* ============================================================
+   Hyprland-style animated gradient border on focused windows
+   Uses CSS @property to animate a conic gradient angle.
+   ============================================================ */
+@property --hypr-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes hypr-rotate {
+  to {
+    --hypr-angle: 360deg;
+  }
+}
+
+.hypr-border {
+  position: relative;
+  isolation: isolate;
+}
+.hypr-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--hypr-angle),
+    rgb(var(--accent)) 0deg,
+    rgb(var(--accent2)) 90deg,
+    rgb(var(--accent3)) 180deg,
+    rgb(var(--accent4)) 270deg,
+    rgb(var(--accent)) 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: hypr-rotate 6s linear infinite;
+}
+
+.hypr-border-soft::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    140deg,
+    rgb(var(--text) / 0.18),
+    rgb(var(--text) / 0.04) 50%,
+    rgb(var(--text) / 0.12)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* ============================================================
+   Focus / interaction
+   ============================================================ */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgb(var(--accent) / 0.55);
+  outline-offset: 1px;
+  border-radius: 6px;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ============================================================
+   Resize handles
+   ============================================================ */
+.resize-handle { position: absolute; z-index: 5; }
+.resize-n  { top: -3px; left: 12px; right: 12px; height: 6px; cursor: ns-resize; }
+.resize-s  { bottom: -3px; left: 12px; right: 12px; height: 6px; cursor: ns-resize; }
+.resize-w  { left: -3px; top: 12px; bottom: 12px; width: 6px; cursor: ew-resize; }
+.resize-e  { right: -3px; top: 12px; bottom: 12px; width: 6px; cursor: ew-resize; }
+.resize-nw { top: -4px; left: -4px; width: 14px; height: 14px; cursor: nwse-resize; }
+.resize-ne { top: -4px; right: -4px; width: 14px; height: 14px; cursor: nesw-resize; }
+.resize-sw { bottom: -4px; left: -4px; width: 14px; height: 14px; cursor: nesw-resize; }
+.resize-se { bottom: -4px; right: -4px; width: 14px; height: 14px; cursor: nwse-resize; }
+
+/* ============================================================
+   Caret blink
+   ============================================================ */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ============================================================
+   Workspace switcher slide
+   ============================================================ */
+@keyframes ws-slide-in-right {
+  from { opacity: 0; transform: translateX(40px) scale(0.99); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes ws-slide-in-left {
+  from { opacity: 0; transform: translateX(-40px) scale(0.99); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* ============================================================
+   Subtle ambient grid
+   ============================================================ */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgb(var(--text) / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--text) / 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Tile chip used in launcher / dashboards */
+.tile {
+  background: rgb(var(--surface) / 0.55);
+  border: 1px solid rgb(var(--text) / 0.05);
+  transition: transform 0.18s cubic-bezier(0.05, 0.9, 0.1, 1.05),
+    border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.tile:hover {
+  transform: translateY(-2px);
+  border-color: rgb(var(--accent) / 0.45);
+  background: rgb(var(--surface) / 0.8);
+}
+
+/* Idle desktop suggested links — opaque glass so text stays readable on busy wallpapers */
+.idle-link-tile {
+  background: rgb(var(--mantle) / 0.92);
+  backdrop-filter: blur(26px) saturate(150%);
+  -webkit-backdrop-filter: blur(26px) saturate(150%);
+  border: 1px solid rgb(var(--text) / 0.14);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.07),
+    0 6px 28px rgb(0 0 0 / 0.42);
+  transition: transform 0.18s cubic-bezier(0.05, 0.9, 0.1, 1.05),
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+.idle-link-tile:hover {
+  transform: translateY(-2px);
+  border-color: rgb(var(--accent) / 0.55);
+  background: rgb(var(--mantle) / 0.97);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.09),
+    0 10px 36px rgb(0 0 0 / 0.48);
+}
+
+/* Pill chip */
+.chip {
+  background: rgb(var(--surface) / 0.6);
+  border: 1px solid rgb(var(--text) / 0.05);
+  color: rgb(var(--subtext));
+  border-radius: 999px;
+}
+.chip:hover {
+  background: rgb(var(--surface) / 0.95);
+  color: rgb(var(--text));
+}
+
+/* Workspace pill */
+.ws-pill {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgb(var(--muted));
+  background: rgb(var(--surface) / 0.5);
+  border: 1px solid rgb(var(--text) / 0.05);
+  transition: all 0.18s cubic-bezier(0.05, 0.9, 0.1, 1.05);
+}
+.ws-pill[data-has="true"] {
+  color: rgb(var(--text));
+  background: rgb(var(--surface2) / 0.7);
+}
+.ws-pill[data-active="true"] {
+  color: rgb(var(--mantle));
+  background: rgb(var(--accent));
+  width: 32px;
+}
+.ws-pill:hover {
+  color: rgb(var(--text));
+}
+
+/* Window shadow profile (subtle drop only, no accent glow) */
+.window-shadow {
+  box-shadow:
+    0 16px 40px -20px rgba(0,0,0,0.6),
+    0 8px 20px -14px rgba(0,0,0,0.5),
+    0 0 0 1px rgb(var(--text) / 0.04);
+}
+
+/* Toast slide */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Animation easing */
+.bezier-wind { transition-timing-function: cubic-bezier(0.05, 0.9, 0.1, 1.05); }
+
+/* hide spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] { -moz-appearance: textfield; }
